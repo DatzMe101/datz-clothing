@@ -5,3 +5,14 @@ export const addItemToCart = (cartItems = [], itemsToAdd) => {
     item.id === itemsToAdd.id ? { ...item, quantity: item.quantity + 1 } : item
   );
 };
+
+export const removeItemFromCart = (cartItems = [], itemToRemove) => {
+  const item = cartItems.find(item => item.id === itemToRemove.id);
+  if (item.quantity === 1)
+    return cartItems.filter(item => item.id !== itemToRemove.id);
+  return cartItems.map(item =>
+    item.id === itemToRemove.id
+      ? { ...item, quantity: item.quantity - 1 }
+      : item
+  );
+};
