@@ -15,7 +15,7 @@ class Shop extends Component {
     return (
       <div>
         {collections.map(collection => {
-          return <CollectionPreview {...collection} />;
+          return <CollectionPreview key={collection.id} {...collection} />;
         })}
       </div>
     );
